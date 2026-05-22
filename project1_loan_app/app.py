@@ -129,7 +129,7 @@ if page == "Apply":
                 format_func=lambda x: f"{x} months ({x//12} yr)" if x >= 12 else f"{x} months",
             )
 
-        submitted = st.form_submit_button("Submit Application", use_container_width=True)
+        submitted = st.form_submit_button("Submit Application", width="stretch")
 
     if submitted:
         if not applicant_name.strip():
@@ -216,7 +216,7 @@ elif page == "History":
             return ""
 
         styled = df_display.style.applymap(style_decision, subset=["Decision"])
-        st.dataframe(styled, use_container_width=True, hide_index=True)
+        st.dataframe(styled, width="stretch", hide_index=True)
         st.caption(f"{len(df_display)} record(s) shown.")
 
         with st.expander("Clear all records"):
@@ -310,4 +310,4 @@ elif page == "Statistics":
         avg_table["Avg Loan Amount"]     = avg_table["Avg Loan Amount"].map("${:,.0f}".format)
         avg_table["Avg Approval Chance"] = avg_table["Avg Approval Chance"].map("{:.1%}".format)
 
-        st.dataframe(avg_table, use_container_width=True, hide_index=True)
+        st.dataframe(avg_table, width="stretch", hide_index=True)
